@@ -1,5 +1,7 @@
 package me.dio.academia.digital.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_alunos")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Aluno {
 
   @Id
@@ -30,6 +33,7 @@ public class Aluno {
   private LocalDate dataDeNascimento;
 
   @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
+  @JsonIgnore
   private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
 
 }
