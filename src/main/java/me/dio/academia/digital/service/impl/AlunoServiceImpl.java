@@ -18,7 +18,14 @@ public class AlunoServiceImpl implements IAlunoService {
 
     @Override
     public Aluno create(AlunoForm form) {
-        return null;
+        Aluno aluno = new Aluno();
+
+        aluno.setNome(form.getNome());
+        aluno.setCpf(form.getCpf());
+        aluno.setBairro(form.getBairro());
+        aluno.setDataDeNascimento(form.getDataDeNascimento());
+
+        return repository.save(aluno);
     }
 
     @Override
@@ -28,8 +35,7 @@ public class AlunoServiceImpl implements IAlunoService {
 
     @Override
     public List<Aluno> getAll() {
-
-        return null;
+        return repository.findAll();
     }
 
     @Override
